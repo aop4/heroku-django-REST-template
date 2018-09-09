@@ -1,7 +1,10 @@
 ## Scope
 I think Django is an amazingly powerful tool, and I'm glad you're considering using it for a REST API. This repo builds off of Heroku's heroku-django-starter-template (https://github.com/heroku/heroku-django-template), so it's geared toward deployment on Heroku--it will make it really easy.  
 This repo can also be used as a starting point for a full website with database/backend capabilities, and I'd consider it a sort of "quick start" guide to setting up a Django backend.  
-I assume no familiarity with Django, but this won't teach you everything you might want to do with it--it'll just get you through the hairy setup steps.
+I assume no familiarity with Django, but this won't teach you everything you might want to do with it--it'll just get you through the hairy setup steps.  
+
+## Sample code
+I added in a sample model, URLs, and views, as detailed at the end of this readme. If you don't want to deal with them, you can remove the corresponding code from `models.py`, `serializers.py`, `urls.py`, and `views.py`. If you're not familiar with Django or the Django REST framework, I suspect it will be extremely helpful to work from those examples, however.
 
 
 ## Setup
@@ -52,4 +55,29 @@ Open up your browser and point it to `localhost:8000`
 #### /admin page
 
 At `localhost:8000/admin`, you'll see an admin interface featuring all the models you register in `rest_api/admin.py`. From the admin page, you can easily add, remove, and modify data in the database. `python manage.py createsuperuser` lets you create a username and password so that you can log in.
+
+
+## Test the REST API in your browser
+
+The Django REST Framework comes with a really simple way to test your REST API on the fly.
+As stated above, this "template" comes with some pre-built stuff. It allows you to interact with a database of students (if you did the above steps correctly) through PUT, POST, GET, and DELETE requests.
+
+#### 1. Add a student  
+After completing the setup steps and running the server, point your browser to `localhost:8000/students/new`. Add a JSON object with a `name` field to the textbox (`{"name": "Spam Spammerson"}`) and click the POST button. You've just made a POST request without any code! Splendid. Add another student.
+You can also do this with something like curl, or JavaScript, of course. See http://www.django-rest-framework.org/tutorial/1-serialization/#testing-our-first-attempt-at-a-web-api for more ways to test your API.
+
+#### 2. View all students
+Point your browser to `localhost:8000/students/all`. You should see a list of all the students you added.
+
+#### 3. View a single student
+Using the ids you can see in `/students/all` during the above step, you can view a single student. Go to `localhost:8000/students/1` (assuming 1 is a valid ID).
+
+#### 4. Modify a student
+Go to the URL you were using to view a student in (3). Enter a JSON object with a *new* `name` field into the text box and click PUT. If you refresh the page to make a GET request on the student, you'll see it has a new name.
+
+#### 5. Delete a student
+Now, while you're on that `localhost:8000/students/<id>` page, hit the big red DELETE button, and then go to `localhost:8000/students/all` again. The student should be gone.
+
+## Further reading
+Hopefully now you know some of the cool features of the Django REST Framework and want to do more exploring and building. Take a gander through the files, feel free to gut them and add your own code, and check out the REST Framework's documentation: http://www.django-rest-framework.org/tutorial/1-serialization/
 
