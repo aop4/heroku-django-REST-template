@@ -4,12 +4,12 @@ from shortuuidfield import ShortUUIDField
 
 
 # A useless example model
-class DataModel(models.Model):
+class Student(models.Model):
 	uuid = ShortUUIDField(editable=False)
 	name = models.CharField(max_length=100, default="")
-
+	
 	def __str__(self):
-		return self.name
+		return 'Student: ' + self.name
 
 
 

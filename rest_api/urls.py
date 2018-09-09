@@ -16,7 +16,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from rest_api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('students/all', views.AllStudents.as_view()),
+    path('students/new', views.CreateStudent.as_view()),
+    url(r'^students/(?P<id>[0-9]+)$', views.StudentInstance.as_view()),
 ]

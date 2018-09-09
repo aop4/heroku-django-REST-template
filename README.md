@@ -41,7 +41,7 @@ to your `~/.bashrc` file (then restart the terminal) or, if you're using `virtua
 #### Managing models  
 
 Run `python manage.py migrate`  
-This will apply your models in `models.py` to the database. Once you run it, you should see a table in the database called `rest_api_datamodel` since there's a model called DataModel (creative, I know) in `models.py` at the moment. After you make any changes to the models, run `python manage.py makemigrations rest_api` followed by `python manage.py migrate`. You should see the changes take effect in the database. Try splitting the `name` field of the `DataModel` class into two different fields, `last_name` and `first_name,` or changing the name of the model (`DataModel`) to something that you'd actually put in your database, like `City` or `ZooAnimal`.
+This will apply your models in `models.py` to the database. Once you run it, you should see a table in the database called `rest_api_student` since there's a model called Student (creative, I know) in `models.py` at the moment. After you make any changes to the models, run `python manage.py makemigrations rest_api` followed by `python manage.py migrate`. You should see the changes take effect in the database. Try splitting the `name` field of the `Student` class into two different fields, `last_name` and `first_name,` or changing the name of the model (`Student`) to something that you'd actually put in your database, like `City` or `ZooAnimal`.
 
 #### Running the server  
 
