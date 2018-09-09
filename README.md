@@ -1,5 +1,6 @@
-I think Django is an amazingly powerful tool, and I'm glad you're considering using it for a REST API. This repo builds off of Heroku's heroku-django-starter template, so it's geared toward deployment on Heroku--it will make it really easy.  
+I think Django is an amazingly powerful tool, and I'm glad you're considering using it for a REST API. This repo builds off of Heroku's heroku-django-starter-template (https://github.com/heroku/heroku-django-template), so it's geared toward deployment on Heroku--it will make it really easy.  
 This repo can also be used as a starting point for a full website with database/backend capabilities, and I'd consider it a sort of "quick start" guide to setting up a Django backend.  
+I assume no familiarity with Django, but this won't teach you everything you might want to do with it--it'll just get you through the hairy setup steps.
 
 `cd` into this directory.
 
@@ -15,11 +16,11 @@ This repo can also be used as a starting point for a full website with database/
 
 `apt-get install sqlite3 #install SQLite3`  
 
-An empty SQLite database file `db.sqlite3` is in the repo for your convenience. I started it with DB Browser for SQLite 3 (https://sqlitebrowser.org/), a useful tool for probing the database.  
+An empty SQLite database file `db.sqlite3` is in the repo for your convenience. I started it with DB Browser for SQLite  (https://sqlitebrowser.org/), a useful tool for probing the database.  
 
-You need to have a `SECRET_KEY` and a `DEBUG` environment variable, or you can replace the lines that search for them in `rest_api/settings.py`. These are used in `settings.py` to allow flexibility between the local and server environments and protect your secret key from exposure via GitHub, etc. If you deploy to Heroku, make sure to set the environment variables on the server (`DEBUG` absolutely must be false for production). A secret key is just a string of random characters; I'd look into how to generate a good one for security purposes, but for the time being you can simply make it "snargledragons" or something. Debug should be `True` on your local machine.  
+You need to have a `SECRET_KEY` and a `DEBUG` environment variable, or you can replace the lines that search for them in `rest_api/settings.py`. These are used in `settings.py` to allow flexibility between the local and server environments and protect your secret key from exposure via GitHub, etc. If you deploy to Heroku, make sure to set the environment variables on the server (`DEBUG` absolutely must be false for production). A secret key is just a string of random characters; I'd look into how to generate a good one for security purposes, but for the time being you can simply make it "snargledragons" or something. Debug should be `True` on your local machine (and again, NOT on the production server).  
 
-You can add  
+For now, you can add  
 ```
 export SECRET_KEY=my_secret_key
 export DEBUG=True
