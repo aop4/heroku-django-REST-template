@@ -59,8 +59,8 @@ At `localhost:8000/admin`, you'll see an admin interface featuring all the model
 
 ## Test the REST API in your browser
 
-The Django REST Framework comes with a really simple way to test your REST API on the fly.
-As stated above, this "template" comes with some pre-built stuff. It allows you to interact with a database of students (if you did the above steps correctly) through PUT, POST, GET, and DELETE requests.
+The Django REST Framework comes with a really simple way to test your REST API on the fly, including an interactive browser interface for all your views--even when they're just returning JSON data.
+As stated above, this "template" also comes with some pre-built stuff. It allows you to interact with a database of students (if you did the above steps correctly) through PUT, POST, GET, and DELETE requests. Let's try it in the browser.
 
 #### 1. Add a student  
 After completing the setup steps and running the server, point your browser to `localhost:8000/students/new`. Add a JSON object with a `name` field to the textbox (`{"name": "Spam Spammerson"}`) and click the POST button. You've just made a POST request without any code! Splendid. Add another student.
@@ -79,5 +79,5 @@ Go to the URL you were using to view a student in (3). Enter a JSON object with 
 Now, while you're on that `localhost:8000/students/<id>` page, hit the big red DELETE button, and then go to `localhost:8000/students/all` again. The student should be gone.
 
 ## Further reading
-Hopefully now you know some of the cool features of the Django REST Framework and want to do more exploring and building. Take a gander through the files, feel free to gut them and add your own code, and check out the REST Framework's documentation: http://www.django-rest-framework.org/tutorial/1-serialization/
-
+Check out the code in `views.py`, `models.py`, and `serializers.py` that's backing this whole thing.
+Hopefully now you know some of the cool features of the Django REST Framework and want to do more exploring and building. Feel free to gut my files and add your own code, and check out the Django REST Framework's tutorial: http://www.django-rest-framework.org/tutorial/1-serialization/
