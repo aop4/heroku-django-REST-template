@@ -21,7 +21,6 @@ from rest_api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('students/all', views.AllStudents.as_view()),
-    path('students/new', views.CreateStudent.as_view()),
+    path('students/', views.Students.as_view()),
     url(r'^students/(?P<id>[0-9]+)$', views.StudentInstance.as_view()),
 ]

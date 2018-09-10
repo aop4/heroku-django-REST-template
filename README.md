@@ -59,25 +59,27 @@ At `localhost:8000/admin`, you'll see an admin interface featuring all the model
 
 ## Test the REST API in your browser
 
-The Django REST Framework comes with a really simple way to test your REST API on the fly, including an interactive browser interface for all your views--even when they're just returning JSON data.
+The Django REST Framework comes with a really simple way to test your REST API on the fly: an interactive browser interface for all your views--even when they're just returning JSON data.
 As stated above, this "template" also comes with some pre-built stuff. It allows you to interact with a database of students (if you did the above steps correctly) through PUT, POST, GET, and DELETE requests. Let's try it in the browser.
+The request handlers themselves are in `views.py`.
 
 #### 1. Add a student  
-After completing the setup steps and running the server, point your browser to `localhost:8000/students/new`. Add a JSON object with a `name` field to the textbox (`{"name": "Spam Spammerson"}`) and click the POST button. You've just made a POST request without any code! Splendid. Add another student.
+After completing the setup steps and running the server, point your browser to `localhost:8000/students`. Add a JSON object with a `name` field to the textbox (`{"name": "Spam Spammerson"}`) and click the POST button. You've just made a POST request without any code! Splendid. Add another student.
 You can also do this with something like curl, or JavaScript, of course. See http://www.django-rest-framework.org/tutorial/1-serialization/#testing-our-first-attempt-at-a-web-api for more ways to test your API.
 
 #### 2. View all students
-Point your browser to `localhost:8000/students/all`. You should see a list of all the students you added.
+Point your browser to `localhost:8000/students` again (i.e., refresh the page). You should see a list of all the students you added. GET requests are done automatically when you visit the URL.
 
 #### 3. View a single student
-Using the ids you can see in `/students/all` during the above step, you can view a single student. Go to `localhost:8000/students/1` (assuming 1 is a valid ID).
+Using the ids you can see in `/students` during the above step, you can view a single student. Go to `localhost:8000/students/1` (assuming 1 is a valid ID).
 
 #### 4. Modify a student
 Go to the URL you were using to view a student in (3). Enter a JSON object with a *new* `name` field into the text box and click PUT. If you refresh the page to make a GET request on the student, you'll see it has a new name.
 
 #### 5. Delete a student
-Now, while you're on that `localhost:8000/students/<id>` page, hit the big red DELETE button, and then go to `localhost:8000/students/all` again. The student should be gone.
+Now, while you're on that `localhost:8000/students/<id>` page, hit the big red DELETE button, and then go to `localhost:8000/students` again. The student should be absent from the list.
 
 ## Further reading
 Check out the code in `views.py`, `models.py`, and `serializers.py` that's backing this whole thing.
-Hopefully now you know some of the cool features of the Django REST Framework and want to do more exploring and building. Feel free to gut my files and add your own code, and check out the Django REST Framework's tutorial: http://www.django-rest-framework.org/tutorial/1-serialization/
+Hopefully you've seen some of the cool features of the Django REST Framework and want to do more exploring and building. Take a gander through the files, feel free to gut them and add your own code, and check out the Django REST Framework's tutorial: http://www.django-rest-framework.org/tutorial/1-serialization/
+

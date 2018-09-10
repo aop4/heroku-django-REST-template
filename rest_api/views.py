@@ -6,16 +6,27 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core import serializers
 
-class AllStudents(APIView):
+class Students(APIView):
     # retrieve a list of the Student records in the DB
     def get(self, request):
         students = Student.objects.all()
         serializer = DataModelSerializer(students, many=True) # use many to serialize a queryset
-        return Response(serializer.data)
+        return Response(serializer.data) # status is 200 by default
+    
+    # add in a student with the passed in name
+    def post(self, request):
+        new_stdt_name = request.data.get('name', None)
+        if not new_stdt_name:
+            return no_name_error()
+        student = Student()
+        student.name = new_stdt_name
+        student.save()
+        serializer = DataModelSerializer(student)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 # a couple utility functions
 def no_name_error():
-    return Response(status=status.HTTP_400_BAD_REQUEST, data="No name provided")
+    return Response(status=status.HTTP_400_BAD_REQUEST, data={"message":"No name provided"})
 
 def nonexistent_id_error():
     return Response(status=status.HTTP_404_NOT_FOUND, data={'message':"No student with that ID"})
@@ -51,14 +62,3 @@ class StudentInstance(APIView):
         serializer = DataModelSerializer(student)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class CreateStudent(APIView):
-    # add in a student with the passed in name
-    def post(self, request):
-        new_stdt_name = request.data.get('name', None)
-        if not new_stdt_name:
-            return no_name_error()
-        student = Student()
-        student.name = new_stdt_name
-        student.save()
-        serializer = DataModelSerializer(student)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
