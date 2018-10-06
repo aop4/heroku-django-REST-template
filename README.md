@@ -1,6 +1,6 @@
 ## Scope
 I think Django is an amazingly powerful tool, and I'm glad you're considering using it for a REST API. This repo builds off of Heroku's heroku-django-starter-template (https://github.com/heroku/heroku-django-template), so it's geared toward deployment on Heroku--it will make it really easy.  
-This repo can also be used as a starting point for a full website with database/backend capabilities, and I'd consider it a sort of "quick start" guide to setting up a Django backend.  
+This repo can also be used as a starting point for a full website with database/backend capabilities, and I'd consider it a sort of "quick start" guide to setting up a Django backend. However, there are some things specific to rest APIs in here. If you don't quite know what REST APIs are, I made another resource for you [here](https://github.com/aop4/REST-crash-course).  
 I assume no familiarity with Django, but this won't teach you everything you might want to do with it--it'll just get you through the hairy setup steps.  
 
 ## Sample code
@@ -28,7 +28,7 @@ Run this command:
 
 `apt-get install sqlite3 #install SQLite3`  
 
-An empty SQLite database file `db.sqlite3` is in the repo for your convenience. I started it with DB Browser for SQLite  (https://sqlitebrowser.org/), a useful tool for probing the database. 
+An empty SQLite database file `db.sqlite3` is in the repo for your convenience. I started it with DB Browser for SQLite  (https://sqlitebrowser.org/), a useful tool for probing the database. Now, SQLite is not for production databases, be warned. It's just a lot easier to set it up. When you're ready for production, you might want to use Postgres.
 
 #### Environment variables
 
